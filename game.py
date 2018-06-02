@@ -6,7 +6,7 @@ from pygame.locals import *
 sense = SenseHat()
 sense.clear()
 
-# init pygame librairy
+# init pygame library
 pygame.init()
 pygame.display.set_mode((640, 480))
 
@@ -92,33 +92,31 @@ def check_win():
     # current game
     global game
 
-    # count marker
-    count = 0
-    
     # horizontal check
     for y in [0,1,2,3,4,5,6,7]:
-        for val in [0,1,2,3,4,5,6,7]:
-            
-            # check 
-            if game.get_game_board_at(y,val) == game.get_current_player().get_id():
-                count += 1
-                
-                if count >= 4:
-                    return True
-                
-            else:
-                count = 0
-                
-    # vertical check
-    for val in [0,1,2,3,4,5,6,7]:
-      for y in [0,1,2,3,4,5,6,7]:
+      for val in [0,1,2,3,4,5,6,7]:
             
         # check 
         if game.get_game_board_at(y,val) == game.get_current_player().get_id():
           count += 1
                 
           if count >= 4:
-            return True    
+            return True
+                
+        else:
+          count = 0
+                
+    # vertical check
+    for val in [0,1,2,3,4,5,6,7]:
+      for y in [0,1,2,3,4,5,6,7]:
+            
+          # check 
+          if game.get_game_board_at(y,val) == game.get_current_player().get_id():
+            count += 1
+                
+            if count >= 4:
+              return True
+                
           else:
             count = 0
   
@@ -218,5 +216,3 @@ def init_game():
 if __name__ == '__main__':
   game = ConnectFourGame()
   init_game()
-
- 
